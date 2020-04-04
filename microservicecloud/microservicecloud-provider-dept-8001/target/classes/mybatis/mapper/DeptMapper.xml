@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 导入dtd -->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.springcloud.dao.DeptDao">
+    <!-- 数据库增加操作 -->
+    <insert id="addDept" parameterType="com.atguigu.springcloud.entities.Dept">
+		insert into dept(dname,db_source) value(#{dname},database())
+	</insert>
+
+    <select id="findById" parameterType="Long"
+            resultType="com.atguigu.springcloud.entities.Dept">
+		select deptno,dname,db_source from dept where deptno=#{deptno};
+	</select>
+
+    <select id="finAll" resultType="com.atguigu.springcloud.entities.Dept">
+		select deptno,dname,db_source from dept;
+	</select>
+</mapper>
